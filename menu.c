@@ -1,49 +1,44 @@
 #include "menu.h"
 
-void render_menu(SDL_Renderer *renderer, int selectedOption) {
-    // Limpa a tela com a cor azul
+void render_menu(SDL_Renderer *renderer, TTF_Font *font, int selectedOption) {
     SDL_SetRenderDrawColor(renderer, 0, 0, 255, 255);
     SDL_RenderClear(renderer);
 
-    // Define a cor dos retângulos
-    SDL_Color color;
+    SDL_Color color = { 255, 255, 255, 255 };
+    SDL_Color selectedColor = { 255, 255, 0, 255 }; // Cor amarela para a opção selecionada
+
+    // Renderiza a opção "Iniciar"
     if (selectedOption == 0) {
-        color = (SDL_Color){ 255, 255, 0, 255 }; // Amarelo para "Start" selecionado
+        render_text(renderer, font, "Iniciar", selectedColor, 350, 200);
     } else {
-        color = (SDL_Color){ 255, 255, 255, 255 }; // Branco para "Start" não selecionado
+        render_text(renderer, font, "Iniciar", color, 350, 200);
     }
 
-    // Renderiza o retângulo "Start"
-    SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
-    SDL_Rect startRect = { 300, 200, 200, 50 };
-    SDL_RenderFillRect(renderer, &startRect);
-
+    // Renderiza a opção "Sair"
     if (selectedOption == 1) {
-        color = (SDL_Color){ 255, 255, 0, 255 }; // Amarelo para "Exit" selecionado
+        render_text(renderer, font, "Sair", selectedColor, 350, 300);
     } else {
-        color = (SDL_Color){ 255, 255, 255, 255 }; // Branco para "Exit" não selecionado
+        render_text(renderer, font, "Sair", color, 350, 300);
     }
-
-    // Renderiza o retângulo "Exit"
-    SDL_SetRenderDrawColor(renderer, color.r, color.g, color.b, color.a);
-    SDL_Rect exitRect = { 300, 300, 200, 50 };
-    SDL_RenderFillRect(renderer, &exitRect);
 }
 
-int handle_menu_events(SDL_Event *event) {
-    static int selectedOption = 0;
+int handle_menu_events(SDL_Event *event, int *selectedOption) {
     if (event->type == SDL_KEYDOWN) {
         switch (event->key.keysym.sym) {
             case SDLK_UP:
-                selectedOption = 0; // Seleciona "Start"
+                if (*selectedOption > 0) {
+                    (*selectedOption)--;
+                }
                 break;
             case SDLK_DOWN:
-                selectedOption = 1; // Seleciona "Exit"
+                if (*selectedOption < 1) {
+                    (*selectedOption)++;
+                }
                 break;
             case SDLK_RETURN:
-                return selectedOption == 0 ? 1 : -1; // 1 para iniciar o jogo, -1 para sair
+                return *selectedOption == 0 ? 1 : -1; // 1 para iniciar o jogo, -1 para sair
         }
     }
-    return selectedOption;
+    return 0;
 }
 

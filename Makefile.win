@@ -6,9 +6,9 @@ CC       = gcc.exe -D__DEBUG__
 WINDRES  = windres.exe
 OBJ      = main.o snake.o game.o menu.o
 LINKOBJ  = main.o snake.o game.o menu.o
-LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -L"C:/SDL2/lib" -L"C:/SDL2/lib" -lmingw32 -lSDL2main -lSDL2 -g3
-INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Users/Samir Hamud/Documents/SDL2-devel-2.30.3-mingw/SDL2-2.30.3/x86_64-w64-mingw32/include/SDL2" -I"C:/SDL2/include"
-CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++" -I"C:/Users/Samir Hamud/Documents/SDL2-devel-2.30.3-mingw/SDL2-2.30.3/x86_64-w64-mingw32/include/SDL2" -I"C:/SDL2/include"
+LIBS     = -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib" -L"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/lib" -static-libgcc -L"C:/SDL2/lib" -L"C:/SDL_TFF/lib" -L"C:/SDL2/lib" -L"C:/SDL_TTF/lib" -lmingw32 -lSDL2main -lSDL2 -lSDL2_ttf -g3
+INCS     = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Users/Samir Hamud/Documents/SDL2-devel-2.30.3-mingw/SDL2-2.30.3/x86_64-w64-mingw32/include/SDL2" -I"C:/SDL2/include" -I"C:/SDL_TFF/include"
+CXXINCS  = -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/x86_64-w64-mingw32/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include" -I"C:/Program Files (x86)/Dev-Cpp/MinGW64/lib/gcc/x86_64-w64-mingw32/4.9.2/include/c++" -I"C:/Users/Samir Hamud/Documents/SDL2-devel-2.30.3-mingw/SDL2-2.30.3/x86_64-w64-mingw32/include/SDL2" -I"C:/SDL2/include" -I"C:/SDL_TFF/include"
 BIN      = snakeGame.exe
 CXXFLAGS = $(CXXINCS) -g3
 CFLAGS   = $(INCS) -g3 -std=c99
